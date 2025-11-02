@@ -152,10 +152,20 @@ class Lab01_op:
         Return:
             A 2D image of the spin echo sequence, shape: (128, 128)
         """
-        # Your code here ...
+        SE_image = np.zeros_like(self.PD_map, dtype=float)
 
-        SE = None
-        return SE
+        rows, cols = self.PD_map.shape
+        for i in range(rows):
+            for j in range(cols):
+                T1 = self.T1_map[i, j]
+                T2 = self.T2_map[i, j]
+                PD = self.PD_map[i, j]
+
+                signal = PD * (1 - np.exp(-TR / T1)) * np.exp(-TE / T2)
+
+                SE_image[i, j] = signal
+
+        return SE_image
 
 
 if __name__ == "__main__":
