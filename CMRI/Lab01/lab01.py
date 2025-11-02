@@ -131,3 +131,5 @@ if __name__ == "__main__":
 
     # %% 1.1.	Load the file digital_brain_phantom.mat by calling load_data method.
     op.load_data()
+
+    op.get_csf_mask()
