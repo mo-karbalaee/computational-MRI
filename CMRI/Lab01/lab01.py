@@ -53,9 +53,13 @@ class Lab01_op:
         Return:
             A mask of GM, shape: (128, 128)
         """
-        # Your code here ...
-
-        return None
+        mask = np.zeros_like(self.label, dtype=np.uint8)
+        rows, cols = self.label.shape
+        for i in range(rows):
+            for j in range(cols):
+                if self.label[i, j] == 2:
+                    mask[i, j] = 1
+        return mask
 
     def get_wm_mask(self):
         """
@@ -63,7 +67,13 @@ class Lab01_op:
         Return:
             A mask of WM, shape: (128, 128)
         """
-        # Your code here ...
+        mask = np.zeros_like(self.label, dtype=np.uint8)
+        rows, cols = self.label.shape
+        for i in range(rows):
+            for j in range(cols):
+                if self.label[i, j] == 3:
+                    mask[i, j] = 1
+        return mask
 
         return None
 
