@@ -33,41 +33,6 @@ class Lab01_op:
         self.T2_map = mat["ph"]["t2"][0][0]  # (128, 128)
         self.PD_map = mat["ph"]["sd"][0][0]  # (128, 128)
 
-"""
-Computational Magnetic Resonance Imaging (CMRI) 2024/2025 Winter semester
-
-- Author          : Jinho Kim
-- Email           : <jinho.kim@fau.de>
-"""
-
-import numpy as np
-import utils
-
-
-class Lab01_op:
-    """
-    label: Label map of the digital brain phantom
-        - 1: Cerebrospinal fluid (CSF)
-        - 2: Gray matter (GM)
-        - 3: White matter (WM)
-    T1_map: Predefined T1 Values
-    T2_map: Predefined T2 Values
-    PD_map: Proton Density Values
-    """
-
-    def __init__(self):
-        # Define TR and TE as a pair in a list [TR, TE]
-        self.PDw_TRTE = None  # Task 2.2
-        self.T1w_TRTE = None  # Task 2.3
-        self.T2w_TRTE = None  # Task 2.4
-
-    def load_data(self, path="digital_brain_phantom.mat"):
-        mat = utils.load_data(path)
-        self.label = mat["ph"]["label"][0][0]  # (128, 128)
-        self.T1_map = mat["ph"]["t1"][0][0]  # (128, 128)
-        self.T2_map = mat["ph"]["t2"][0][0]  # (128, 128)
-        self.PD_map = mat["ph"]["sd"][0][0]  # (128, 128)
-
     def get_csf_mask(self):
         """
         Get CSF mask from the label map
