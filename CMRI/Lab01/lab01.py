@@ -75,7 +75,6 @@ class Lab01_op:
                     mask[i, j] = 1
         return mask
 
-        return None
 
     def get_T1(self, target):
         """
@@ -86,10 +85,19 @@ class Lab01_op:
         Return:
             T1 value of the target region in [ms]
         """
-        # Your code here ...
+        selected_values = []
+        rows, cols = target.shape
+        for i in range(rows):
+            for j in range(cols):
+                if target[i, j] == 1:
+                    selected_values.append(self.T1_map[i, j])
 
-        T1_ms = None
+        selected_values = np.array(selected_values)
+
+        T1_ms = np.mean(selected_values)
+
         return T1_ms
+
 
     def get_T2(self, target):
         """
@@ -100,10 +108,18 @@ class Lab01_op:
         Return:
             T2 value of the target region in [ms]
         """
-        # Your code here ...
+        selected_values = []
+        rows, cols = target.shape
+        for i in range(rows):
+            for j in range(cols):
+                if target[i, j] == 1:
+                    selected_values.append(self.T2_map[i, j])
 
-        T2_ms = None
+        selected_values = np.array(selected_values)
+        T2_ms = np.mean(selected_values)
+
         return T2_ms
+
 
     def get_PD(self, target):
         """
@@ -114,9 +130,16 @@ class Lab01_op:
         Return:
             PD value of the target region
         """
-        # Your code here ...
+        selected_values = []
+        rows, cols = target.shape
+        for i in range(rows):
+            for j in range(cols):
+                if target[i, j] == 1:
+                    selected_values.append(self.PD_map[i, j])
 
-        PD = None
+        selected_values = np.array(selected_values)
+        PD = np.mean(selected_values)
+
         return PD
 
     def spin_echo(self, TR, TE):
